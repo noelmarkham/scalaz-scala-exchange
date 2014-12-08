@@ -565,7 +565,7 @@ scala> f.foreach(println)
 101
           </code></pre>
         </section>
-<!--
+
         <section>
 	  <aside class="notes">
 	    <ul>
@@ -577,22 +577,21 @@ scala> f.foreach(println)
           <h2>Typeclasses</h2>
           <h5 class="fragment">Applicative</h5>
           <pre class="fragment"><code data-trim class="scala">
-scala> def sum(a: Int, b: Int, c: Int): Int = a + b + c
-
-scala> val numbers = Map("a" -> 4, "b" -> 5, "c" -> 6)
+> def sum(a: Int, b: Int, c: Int): Int = 
+                                   a + b + c
+> val m = Map("a" -> 4, "b" -> 5, "c" -> 6)
           </code></pre>
           <pre class="fragment"><code data-trim class="scala">
-scala> val maybeA = numbers.get("a")
+> val maybeA = m.get("a")
 maybeA: Option[Int] = Some(4)
-
-scala> val maybeB = numbers.get("b")
+> val maybeB = m.get("b")
 maybeB: Option[Int] = Some(5)
-
-scala> val maybeC = numbers.get("c")
+> val maybeC = m.get("c")
 maybeC: Option[Int] = Some(6)
           </code></pre>
           <pre class="fragment"><code data-trim class="scala">
-scala> val maybeTotal = (maybeA |@| maybeB |@| maybeC)(sum)
+> val maybeTotal = 
+       (maybeA |@| maybeB |@| maybeC)(sum)
 maybeTotal: Option[Int] = Some(15)
           </code></pre>
         </section>
@@ -607,16 +606,17 @@ maybeTotal: Option[Int] = Some(15)
           <h2>Typeclasses</h2>
           <h5>Applicative</h5>
           <pre class="fragment"><code data-trim class="scala">
-scala> val maybeD = numbers.get("d")
+> val maybeD = m.get("d")
 maybeD: Option[Int] = None
 
-scala> val newTotal = (maybeB |@| maybeC |@| maybeD)(sum)
+> val newTotal = 
+   (maybeB |@| maybeC |@| maybeD)(sum)
 newTotal: Option[Int] = None
           </code></pre>
 	  <p class="fragment">Think of this as <code>map</code> for a function with an arbitrary number of arguments</p>
 	  <p class="fragment">Of course, any <code>Applicative</code>, not just <code>Option</code></p>
         </section>
--->
+
         <section>
 	  <aside class="notes">
 	    <ul>
